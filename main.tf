@@ -8,8 +8,7 @@ resource "random_string" "bucket" {
 }
 
 resource "aws_s3_bucket" "bootstrap" {
-  bucket = "panw-bootstrap-${random_string.bucket.result}"
-  #   acl    = "private"
+  bucket = "panw-bootstrap-${random_string.bucket.result}"  
 }
 
 resource "aws_s3_bucket_public_access_block" "bootstrap" {
@@ -22,29 +21,25 @@ resource "aws_s3_bucket_public_access_block" "bootstrap" {
 }
 
 resource "aws_s3_object" "folder_config" {
-  bucket = aws_s3_bucket.bootstrap.id
-  #   acl    = "private"
+  bucket = aws_s3_bucket.bootstrap.id  
   key    = "config/"
   source = "/dev/null"
 }
 
 resource "aws_s3_object" "folder_content" {
-  bucket = aws_s3_bucket.bootstrap.id
-  #   acl    = "private"
+  bucket = aws_s3_bucket.bootstrap.id  
   key    = "content/"
   source = "/dev/null"
 }
 
 resource "aws_s3_object" "folder_license" {
-  bucket = aws_s3_bucket.bootstrap.id
-  #   acl    = "private"
+  bucket = aws_s3_bucket.bootstrap.id  
   key    = "license/"
   source = "/dev/null"
 }
 
 resource "aws_s3_object" "folder_software" {
-  bucket = aws_s3_bucket.bootstrap.id
-  #   acl    = "private"
+  bucket = aws_s3_bucket.bootstrap.id  
   key    = "software/"
   source = "/dev/null"
 }
